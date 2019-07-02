@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WeatherController@index')->name('weather');
+Route::get('/orders', 'OrderController@index')->name('orders.index');
+Route::get('/orders/{orderId}/edit', 'OrderController@edit')->where(['orderId' => '[0-9]+'])->name('orders.edit');
+Route::put('/orders/{orderId}', 'OrderController@update')->where(['orderId' => '[0-9]+'])->name('orders.update');
